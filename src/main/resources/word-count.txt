@@ -1,0 +1,17 @@
+birthday : 5
+new : 12
+year : 4
+happy : 8
+black : 4
+yellow : 4
+an : 10
+bike : 4
+blue : 8
+helicopter : 4
+light : 4
+car : 4
+and : 7
+weather : 8
+dark : 3
+day : 4
+elephant : 4
