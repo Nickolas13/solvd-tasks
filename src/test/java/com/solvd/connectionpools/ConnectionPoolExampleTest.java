@@ -1,11 +1,9 @@
 package com.solvd.connectionpools;
 
-import com.solvd.connectionpools.connections.C3PO;
-import com.solvd.connectionpools.connections.DBCP;
-import com.solvd.connectionpools.connections.HikariCP;
+import com.solvd.pools.connectionpools.ConnectionPoolExample;
+import com.solvd.pools.connectionpools.IConnectionPool;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;

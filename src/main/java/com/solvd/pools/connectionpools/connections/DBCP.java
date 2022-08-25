@@ -1,4 +1,4 @@
-package com.solvd.connectionpools.connections;
+package com.solvd.pools.connectionpools.connections;
 
 import org.apache.commons.dbcp2.*;
 

@@ -1,4 +1,4 @@
-package com.solvd.connectionpools.connections;
+package com.solvd.pools.connectionpools.connections;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

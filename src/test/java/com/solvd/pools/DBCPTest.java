@@ -1,6 +1,6 @@
 package com.solvd.pools;
 
-import com.solvd.connectionpools.connections.DBCP;
+import com.solvd.pools.connectionpools.connections.DBCP;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
