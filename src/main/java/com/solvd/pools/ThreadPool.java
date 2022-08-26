@@ -1,11 +1,15 @@
 package com.solvd.pools;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThreadPool implements Runnable {
+    private static final Logger logger = LogManager.getLogger(ThreadPool.class);
     private String name;
 
     public ThreadPool(String name) {
@@ -37,19 +41,21 @@ public class ThreadPool implements Runnable {
     public void run() {
         try {
             for (int i = 0; i < 5; i++) {
-                Date d = new Date();
-                SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
+//                Date d = new Date();
+//                SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
                 if (i == 0) {
-                    System.out.println("Init time for task name: " + name + " = " + format.format(d));
+                    logger.info(name);
+//                    System.out.println("Init time for task name: " + name + " = " + format.format(d));
 
                 } else {
-                    System.out.println("Execution time for task name: " + name + " = " + format.format(d));
+                    logger.info(name);
+//                    System.out.println("Execution time for task name: " + name + " = " + format.format(d));
 
                 }
                 Thread.sleep(1000);
 
             }
-            System.out.println(name + "finished");
+            System.out.println(name + " finished");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

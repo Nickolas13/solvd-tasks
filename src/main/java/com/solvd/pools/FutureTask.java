@@ -1,5 +1,8 @@
 package com.solvd.pools;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -8,6 +11,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class FutureTask {
+    private static final Logger logger = LogManager.getLogger(FutureTask.class);
     public static void main(String[] args) {
         ExecutorService example = Executors.newFixedThreadPool(5);
 
@@ -23,7 +27,8 @@ public class FutureTask {
             try {
                 //getting future value
                 Integer result = future.get();
-                System.out.println("Result " + (i + 1) + ": " + result);
+                logger.info((i + 1) + " : " + result);
+//                System.out.println("Result " + (i + 1) + ": " + result);
 
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
