@@ -1,7 +1,7 @@
-package com.solvd.other.anonymous;
+package com.solvd.other.enums.anonymous;
 
-import com.solvd.other.anonymous.interfaces.Eat;
-import com.solvd.other.anonymous.interfaces.Talk;
+import com.solvd.other.enums.anonymous.interfaces.Eat;
+import com.solvd.other.enums.anonymous.interfaces.Talk;
 
 public class Human implements Talk, Eat {
 

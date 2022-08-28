@@ -12,7 +12,6 @@ public class DBCP {
         dataSource.setUrl("jdbc:mysql://localhost:3306/zoo");
         dataSource.setUsername("root");
         dataSource.setPassword("E4b3j5dV8s!$");
-        dataSource.setMinIdle(5);
         dataSource.setMaxIdle(10);
 
     }

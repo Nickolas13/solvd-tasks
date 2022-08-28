@@ -1,4 +1,4 @@
-package com.solvd.pools.connectionpools;
+package com.solvd.pools.connectionpools.one;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

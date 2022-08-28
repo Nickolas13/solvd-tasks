@@ -1,7 +1,7 @@
 package com.solvd.connectionpools;
 
-import com.solvd.pools.connectionpools.ConnectionPoolExample;
-import com.solvd.pools.connectionpools.IConnectionPool;
+import com.solvd.pools.connectionpools.one.ConnectionPoolExample;
+import com.solvd.pools.connectionpools.one.IConnectionPool;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;

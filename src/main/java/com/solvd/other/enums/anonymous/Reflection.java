@@ -1,4 +1,4 @@
-package com.solvd.other.anonymous;
+package com.solvd.other.enums.anonymous;
 
 import com.solvd.animal.animalclasses.Vivarium;
 
