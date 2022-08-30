@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConnectionPoolExample implements IConnectionPool {
-    private static int INITIAL_POOL_SIZE = 7;
+    private static int INITIAL_POOL_SIZE = 5;
     private String url;
     private String user;
     private String password;

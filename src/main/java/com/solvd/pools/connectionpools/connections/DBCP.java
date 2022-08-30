@@ -13,7 +13,6 @@ public class DBCP {
         dataSource.setUsername("root");
         dataSource.setPassword("E4b3j5dV8s!$");
         dataSource.setMaxIdle(10);
-
     }
 
     public static Connection getConnection() throws SQLException {

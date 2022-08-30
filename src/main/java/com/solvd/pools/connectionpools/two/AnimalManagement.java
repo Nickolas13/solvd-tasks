@@ -4,6 +4,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.*;
 
+
 public class AnimalManagement {
     private static AnimalManagement instance;
     private static BasicDataSource dataSource;
@@ -17,9 +18,17 @@ public class AnimalManagement {
         dataSource.setMaxIdle(5);
     }
 
+    public AnimalManagement(String url, String userName, String password) {
+        dataSource = new BasicDataSource();
+        dataSource.setUrl(url);
+        dataSource.setUsername(userName);
+        dataSource.setPassword(password);
+    }
+
     public static AnimalManagement getInstance() {
         return instance == null ? new AnimalManagement() : instance;
     }
+
 
     public String getAnimals() {
         try (Connection connection = dataSource.getConnection()) {
@@ -55,6 +64,7 @@ public class AnimalManagement {
             e.printStackTrace();
         }
     }
+
 
     public void closeSource() throws SQLException {
         dataSource.close();

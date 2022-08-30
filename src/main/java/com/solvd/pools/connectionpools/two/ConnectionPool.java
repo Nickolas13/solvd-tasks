@@ -1,12 +1,15 @@
 package com.solvd.pools.connectionpools.two;
 
+
+import com.solvd.pools.connectionpools.one.ConnectionPoolExample;
+import com.solvd.pools.connectionpools.one.IConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
@@ -22,7 +25,7 @@ public class ConnectionPool {
 //                    check("is running");
 //                    management.addAnimal("arina", "eagle", 200, 30, 50);
 //                }).forEach(r -> service.submit(r));
-
+//
 
         for (int i = 1; i <= 7; i++) {
             service.submit(() -> {
@@ -39,6 +42,6 @@ public class ConnectionPool {
     }
 
     private static void check(String msg) {
-        System.out.println(Thread.currentThread().getName() + " - " + msg);
+        logger.info(Thread.currentThread().getName() + " - " + msg);
     }
 }

@@ -1,4 +1,4 @@
-package com.solvd.other.streams;
+package com.solvd.lambda.streams;
 
 public class Student {
     private String name;
