@@ -14,7 +14,7 @@ public class AnimalManagement {
         dataSource = new BasicDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/zoo");
         dataSource.setUsername("root");
-        dataSource.setPassword("E4b3j5dV8s!$");
+        dataSource.setPassword("nika1148");
         dataSource.setMaxIdle(5);
     }
 
@@ -39,7 +39,7 @@ public class AnimalManagement {
                 output += "\n------------------------------"
                         + "\nAnimal ID: " + result.getInt("AnimalId")
                         + "\nname: " + result.getString("name")
-                        + "\nanimal type: " + result.getString("animalType")
+                        + "\nanimal type: " + result.getString("type")
                         + "\nfood Cost: " + result.getInt("foodCost")
                         + "\nweight: " + result.getInt("weight")
                         + "\nage: " + result.getInt("age");
@@ -53,7 +53,7 @@ public class AnimalManagement {
 
     public void addAnimal(String name, String type, int foodCost, int weight, int age) {
         try (Connection conn = dataSource.getConnection()) {
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO animals(name,animalType,foodCost,weight,age) VALUES (?,?,?,?,?)");
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO animals(name,type,foodCost,weight,age) VALUES (?,?,?,?,?)");
             statement.setString(1, name);
             statement.setString(2, type);
             statement.setInt(3, foodCost);
