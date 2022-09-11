@@ -1,47 +1,73 @@
 package com.solvd.pools.connectionpools.two;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 
-import com.solvd.pools.connectionpools.one.ConnectionPoolExample;
-import com.solvd.pools.connectionpools.one.IConnectionPool;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.sql.*;
 
-import java.sql.SQLException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 public class ConnectionPool {
-    private static final Logger logger = LogManager.getLogger(ConnectionPool.class);
+    private static ConnectionPool instance;
+    private static BasicDataSource dataSource;
 
-    public static void main(String[] args) throws SQLException, InterruptedException {
-        AnimalManagement management = new AnimalManagement();
-        ExecutorService service = Executors.newFixedThreadPool(5);
 
-//        IntStream.rangeClosed(1, 7)
-//                .mapToObj(i -> (Runnable) () -> {
-//                    check("is running");
-//                    management.addAnimal("arina", "eagle", 200, 30, 50);
-//                }).forEach(r -> service.submit(r));
-//
-
-        for (int i = 1; i <= 7; i++) {
-            service.submit(() -> {
-                check("running");
-                management.addAnimal("bob", "penguin", 200, 30, 50);
-            });
-        }
-
-//        logger.info(management.getAnimals());
-
-        service.shutdown();
-        service.awaitTermination(5, TimeUnit.SECONDS);
-        management.closeSource();
+    public ConnectionPool() {
+        dataSource = new BasicDataSource();
+        dataSource.setUrl("jdbc:mysql://localhost:3306/zoo");
+        dataSource.setUsername("root");
+        dataSource.setPassword("nika1148");
+        dataSource.setMaxIdle(5);
     }
 
-    private static void check(String msg) {
-        logger.info(Thread.currentThread().getName() + " - " + msg);
+    public ConnectionPool(String url, String userName, String password) {
+        dataSource = new BasicDataSource();
+        dataSource.setUrl(url);
+        dataSource.setUsername(userName);
+        dataSource.setPassword(password);
+    }
+
+    public static ConnectionPool getInstance() {
+        return instance == null ? new ConnectionPool() : instance;
+    }
+
+
+    public String getAnimals() {
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM animals");
+            ResultSet result = statement.executeQuery();
+            String output = "";
+            while (result.next()) {
+                output += "\n------------------------------"
+                        + "\nAnimal ID: " + result.getInt("AnimalId")
+                        + "\nname: " + result.getString("name")
+                        + "\nanimal type: " + result.getString("type")
+                        + "\nfood Cost: " + result.getInt("foodCost")
+                        + "\nweight: " + result.getInt("weight")
+                        + "\nage: " + result.getInt("age");
+            }
+            return output;
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+
+    }
+
+    public void addAnimal(String name, String type, int foodCost, int weight, int age) {
+        try (Connection conn = dataSource.getConnection()) {
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO animals(name,type,foodCost,weight,age) VALUES (?,?,?,?,?)");
+            statement.setString(1, name);
+            statement.setString(2, type);
+            statement.setInt(3, foodCost);
+            statement.setInt(4, weight);
+            statement.setInt(5, age);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void closeSource() throws SQLException {
+        dataSource.close();
+        instance = null;
     }
 }

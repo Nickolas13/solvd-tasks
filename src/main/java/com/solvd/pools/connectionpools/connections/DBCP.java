@@ -9,9 +9,9 @@ public class DBCP {
     private static BasicDataSource dataSource = new BasicDataSource();
 
     static {
-        dataSource.setUrl("jdbc:mysql://localhost:3306/zoo");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
         dataSource.setUsername("root");
-        dataSource.setPassword("E4b3j5dV8s!$");
+        dataSource.setPassword("nika1148");
         dataSource.setMaxIdle(10);
     }
 
