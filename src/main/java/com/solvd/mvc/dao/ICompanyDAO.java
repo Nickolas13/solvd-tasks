@@ -4,7 +4,7 @@ import com.solvd.mvc.tables.Company;
 
 import java.sql.SQLException;
 
-public interface IBaseDAO {
+public interface ICompanyDAO {
     Company getById(int id) throws ClassNotFoundException, SQLException;
 
     void create(Company com) throws SQLException;

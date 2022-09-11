@@ -1,7 +1,7 @@
 package com.solvd.mvc.dao.mysql;
 
-import com.solvd.mvc.dao.IBaseDAO;
 
+import com.solvd.mvc.dao.ICompanyDAO;
 import com.solvd.mvc.tables.Company;
 import com.solvd.pools.connectionpools.connections.DBCP;
 
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 
 //Data Access Objects
-public class CompanyDao extends MySqlDao implements IBaseDAO {
+public class CompanyDao extends MySqlDao implements ICompanyDAO {
     @Override
     public Company getById(int id) throws SQLException {
         Connection conn = DBCP.getConnection();
