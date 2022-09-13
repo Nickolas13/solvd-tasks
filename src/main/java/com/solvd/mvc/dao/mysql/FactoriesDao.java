@@ -20,7 +20,7 @@ public class FactoriesDao extends MySqlDao implements IBaseDao<Factories> {
     }
 
     @Override
-    public void update(Factories object) {
+    public void update(Factories object, String target) {
 
     }
 }

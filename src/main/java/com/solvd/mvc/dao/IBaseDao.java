@@ -7,5 +7,5 @@ public interface IBaseDao<T> {
 
     void remove(int id);
 
-    void update(T object);
+    void update(T object, String target);
 }

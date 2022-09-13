@@ -20,7 +20,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDao<Employees> {
     }
 
     @Override
-    public void update(Employees object) {
+    public void update(Employees object, String target) {
 
     }
 }

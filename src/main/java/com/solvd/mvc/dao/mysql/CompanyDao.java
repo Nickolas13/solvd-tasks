@@ -1,12 +1,11 @@
 package com.solvd.mvc.dao.mysql;
 
 
+import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDao;
 
 import com.solvd.mvc.tables.Company;
-import com.solvd.pools.connectionpools.connections.ConnectionPool;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +17,7 @@ public class CompanyDao extends MySqlDao implements IBaseDao<Company> {
     @Override
     public Company getById(int id) {
         try {
-            Connection conn = ConnectionPool.getConnection();
+            Connection conn = ConnectionPool.getInstance().retrieve();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM company WHERE id = ?");
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
@@ -34,8 +33,6 @@ public class CompanyDao extends MySqlDao implements IBaseDao<Company> {
             return null;
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         return null;
     }
@@ -43,7 +40,7 @@ public class CompanyDao extends MySqlDao implements IBaseDao<Company> {
     @Override
     public void create(Company com) {
         try {
-            Connection conn = ConnectionPool.getConnection();
+            Connection conn = ConnectionPool.getInstance().retrieve();
             PreparedStatement statement = conn.prepareStatement("INSERT INTO company(id,name,location,phone,email) VALUES (?,?,?,?,?)");
             statement.setInt(1, com.getId());
             statement.setString(2, com.getName());
@@ -51,19 +48,59 @@ public class CompanyDao extends MySqlDao implements IBaseDao<Company> {
             statement.setString(4, com.getPhone());
             statement.setString(5, com.getEmail());
             statement.executeUpdate();
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     @Override
     public void remove(int id) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM company WHERE id=?;");
+            statement.setInt(1, id);
+            statement.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void update(Company com) {
+    public void update(Company com, String target) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = null;
+            switch (target) {
+                case "name":
+                    statement = conn.prepareStatement("UPDATE company SET name = ? WHERE id = ?;");
+                    statement.setString(1, com.getName());
+                    statement.setInt(2, com.getId());
+                    statement.executeUpdate();
+                    break;
+                case "location":
+                    statement = conn.prepareStatement("UPDATE company SET location = ? WHERE id = ?;");
+                    statement.setString(1, com.getLocation());
+                    statement.setInt(2, com.getId());
+                    statement.executeUpdate();
+                    break;
+                case "phone":
+                    statement = conn.prepareStatement("UPDATE company SET phone = ? WHERE id = ?;");
+                    statement.setString(1, com.getPhone());
+                    statement.setInt(2, com.getId());
+                    statement.executeUpdate();
+                    break;
+                case "email":
+                    statement = conn.prepareStatement("UPDATE company SET email = ? WHERE id = ?;");
+                    statement.setString(1, com.getEmail());
+                    statement.setInt(2, com.getId());
+                    statement.executeUpdate();
+                    break;
+            }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

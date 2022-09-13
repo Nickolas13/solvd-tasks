@@ -20,7 +20,7 @@ public class CustomerServiceDao extends MySqlDao implements IBaseDao<CustomerSer
     }
 
     @Override
-    public void update(CustomerService object) {
+    public void update(CustomerService object, String target) {
 
     }
 }

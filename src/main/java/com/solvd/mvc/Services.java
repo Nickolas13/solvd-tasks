@@ -3,7 +3,6 @@ package com.solvd.mvc;
 import com.solvd.mvc.dao.mysql.CompanyDao;
 import com.solvd.mvc.tables.Company;
 
-import javax.naming.CompositeName;
 import java.sql.SQLException;
 
 public class Services {
@@ -15,7 +14,7 @@ public class Services {
     }
 
 
-    public void creatCompany(Company com) throws SQLException {
+    public void createCompany(Company com) throws SQLException {
         dao.create(com);
     }
 
@@ -23,9 +22,8 @@ public class Services {
         dao.remove(id);
     }
 
-    public void updateCompany() {
-        Company com = new Company(6, "solvd", "Poland", "5465156", "solvd@gmail.com");
-        dao.update(com);
+    public void updateCompany(Company com, String target) {
+        dao.update(com, target);
     }
 
 
