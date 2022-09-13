@@ -1,6 +1,6 @@
 package com.solvd.pools;
 
-import com.solvd.pools.connectionpools.connections.DBCP;
+import com.solvd.pools.connectionpools.connections.ConnectionPool;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 class DBCPTest {
     @InjectMocks
-    private DBCP dbcpConnection;
+    private ConnectionPool dbcpConnection;
     @Mock
     private Connection mockConnection;
     @Mock

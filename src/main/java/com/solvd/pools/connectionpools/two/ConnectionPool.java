@@ -29,6 +29,10 @@ public class ConnectionPool {
         return instance == null ? new ConnectionPool() : instance;
     }
 
+    public static Connection getConnection() throws SQLException {
+        Connection connection = dataSource.getConnection();
+        return connection;
+    }
 
     public String getAnimals() {
         try (Connection connection = dataSource.getConnection()) {

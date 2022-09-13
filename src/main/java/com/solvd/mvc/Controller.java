@@ -9,8 +9,9 @@ public class Controller {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Services service = new Services();
+        //select by id
         service.getCompanyById(5);
 
-        service.creatCompany(new Company(5, "DropShip", "Sweden", "7854156", "solvd@gmail.com"));
+        //insert new element
     }
 }

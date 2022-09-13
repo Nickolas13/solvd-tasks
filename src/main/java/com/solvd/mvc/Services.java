@@ -9,22 +9,23 @@ import java.sql.SQLException;
 public class Services {
     private static CompanyDao dao = new CompanyDao();
 
-    public Company getCompanyById(int id) throws SQLException, ClassNotFoundException {
+    public Company getCompanyById(int id) throws SQLException {
         Company com = dao.getById(id);
         return com;
+    }
+
+
+    public void creatCompany(Company com) throws SQLException {
+        dao.create(com);
     }
 
     public void removeCompany(int id) {
         dao.remove(id);
     }
 
-    public void creatCompany(Company com) throws SQLException {
-        dao.create(com);
-    }
-
     public void updateCompany() {
-//        Company com = new Company("solvd", "Poland", "5465156", "solvd@gmail.com");
-//        dao.update(com);
+        Company com = new Company(6, "solvd", "Poland", "5465156", "solvd@gmail.com");
+        dao.update(com);
     }
 
 
