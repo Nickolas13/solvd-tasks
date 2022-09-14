@@ -9,6 +9,15 @@ public class Customer {
     private String email;
     private int cs_id;
 
+    public Customer(String firstname, String lastname, String city, int phone, String email, int cs_id) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.city = city;
+        this.phone = phone;
+        this.email = email;
+        this.cs_id = cs_id;
+    }
+
     public int getId() {
         return id;
     }

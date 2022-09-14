@@ -4,6 +4,11 @@ public class Managers {
     private int employees_id;
     private String name;
 
+    public Managers(int employees_id, String name) {
+        this.employees_id = employees_id;
+        this.name = name;
+    }
+
     public int getEmployees_id() {
 
         return employees_id;

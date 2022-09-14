@@ -22,6 +22,7 @@ public class Main {
 //                }).forEach(r -> service.submit(r));
 //
 
+
         for (int i = 1; i <= 7; i++) {
             service.submit(() -> {
                 check("running");

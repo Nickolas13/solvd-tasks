@@ -9,6 +9,15 @@ public class Employees {
     private int factories_id;
     private int cs_id;
 
+    public Employees(String firstname, String lastname, String email, int company_id, int factories_id, int cs_id) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.company_id = company_id;
+        this.factories_id = factories_id;
+        this.cs_id = cs_id;
+    }
+
     public int getId() {
         return id;
     }

@@ -6,6 +6,12 @@ public class CustomerService {
     private String work_from;
     private String work_till;
 
+    public CustomerService(String location, String work_from, String work_till) {
+        this.location = location;
+        this.work_from = work_from;
+        this.work_till = work_till;
+    }
+
     public int getId() {
         return id;
     }

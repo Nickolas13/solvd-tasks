@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 public class MyErrorHandler implements ErrorHandler {
     private PrintWriter out;
 
-
     MyErrorHandler(PrintWriter out) {
         this.out = out;
     }

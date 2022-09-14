@@ -4,8 +4,15 @@ public class Factories {
     private int id;
     private String name;
     private String prod_type;
-    private String pa_month;
+    private int pa_month;
     private int company_id;
+
+    public Factories(String name, String prod_type, int pa_month, int company_id) {
+        this.name = name;
+        this.prod_type = prod_type;
+        this.pa_month = pa_month;
+        this.company_id = company_id;
+    }
 
     public int getId() {
         return id;
@@ -31,11 +38,11 @@ public class Factories {
         this.prod_type = prod_type;
     }
 
-    public String getPa_month() {
+    public int getPa_month() {
         return pa_month;
     }
 
-    public void setPa_month(String pa_month) {
+    public void setPa_month(int pa_month) {
         this.pa_month = pa_month;
     }
 
