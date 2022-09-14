@@ -30,14 +30,15 @@ public class SAXLocalNameCount extends DefaultHandler {
     }
 
     public static void main(String[] args) throws Exception {
-        String filename = null;
+        String filename = "src/main/resources/validation/saxSample.xml";
 
-        for (int i = 0; i < args.length; i++) {
-            filename = args[i];
-            if (i != args.length - 1) {
-                usage();
-            }
-        }
+//        for (int i = 0; i < args.length; i++) {
+//            filename = args[i];
+//            if (i != args.length - 1) {
+//                usage();
+//            }
+//        }
+
         if (filename == null) {
             usage();
         }
@@ -46,7 +47,7 @@ public class SAXLocalNameCount extends DefaultHandler {
         SAXParser saxParser = spf.newSAXParser();
         XMLReader xmlReader = saxParser.getXMLReader();
         xmlReader.setContentHandler(new SAXLocalNameCount());
-        xmlReader.parse(convertToFileURL(filename));
+        xmlReader.parse(filename);
         xmlReader.setErrorHandler(new SErrorHandler(System.err));
 
     }
