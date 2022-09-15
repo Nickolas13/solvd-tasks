@@ -41,12 +41,12 @@ public class CompanyDao extends MySqlDao implements IBaseDao<Company> {
     public void create(Company com) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO company(id,name,location,phone,email) VALUES (?,?,?,?,?)");
-            statement.setInt(1, com.getId());
-            statement.setString(2, com.getName());
-            statement.setString(3, com.getLocation());
-            statement.setString(4, com.getPhone());
-            statement.setString(5, com.getEmail());
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO company(name,location,phone,email) VALUES (?,?,?,?)");
+
+            statement.setString(1, com.getName());
+            statement.setString(2, com.getLocation());
+            statement.setInt(3, com.getPhone());
+            statement.setString(4, com.getEmail());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class CompanyDao extends MySqlDao implements IBaseDao<Company> {
                     break;
                 case "phone":
                     statement = conn.prepareStatement("UPDATE company SET phone = ? WHERE id = ?;");
-                    statement.setString(1, com.getPhone());
+                    statement.setInt(1, com.getPhone());
                     statement.setInt(2, com.getId());
                     statement.executeUpdate();
                     break;

@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class>
-    <student>
-        <firstname>john</firstname>
-        <lastname>wick</lastname>
-        <age>25</age>
-    </student>
+    <students>
+        <student id="65456465">
+            <firstname>john</firstname>
+            <lastname>wick</lastname>
+            <age>25</age>
+            <year>1</year>
+        </student>
+        <student id="654654641">
+            <firstname>bob</firstname>
+            <lastname>anderson</lastname>
+            <age>25</age>
+            <year>3</year>
+        </student>
+        <student id="789794466">
+            <firstname>willy</firstname>
+            <lastname>wonka</lastname>
+            <age>25</age>
+            <year>2</year>
+        </student>
+    </students>
+
 </class>

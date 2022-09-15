@@ -6,11 +6,11 @@ public class Company {
     private int id;
     private String name;
     private String location;
-    private String phone;
+    private int phone;
     private String email;
     private List<Factories> factories;
 
-    public Company(String name, String location, String phone, String email) {
+    public Company(String name, String location, int phone, String email) {
         this.name = name;
         this.location = location;
         this.phone = phone;
@@ -41,11 +41,11 @@ public class Company {
         this.location = location;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 

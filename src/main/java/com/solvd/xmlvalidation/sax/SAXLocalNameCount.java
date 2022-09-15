@@ -9,6 +9,12 @@ import java.util.*;
 import java.io.*;
 
 public class SAXLocalNameCount extends DefaultHandler {
+    static final String JAXP_SCHEMA_LANGUAGE =
+            "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
+    static final String W3C_XML_SCHEMA =
+            "http://www.w3.org/2001/XMLSchema";
+    static final String JAXP_SCHEMA_SOURCE =
+            "http://java.sun.com/xml/jaxp/properties/schemaSource";
     private Hashtable tags;
 
     private static String convertToFileURL(String filename) {
@@ -30,25 +36,61 @@ public class SAXLocalNameCount extends DefaultHandler {
     }
 
     public static void main(String[] args) throws Exception {
-        String filename = "src/main/resources/validation/saxSample.xml";
+        String filename = null;
+        boolean dtdValidate = false;
+        boolean xsdValidate = false;
+        String schemaSource = "src/main/resources/validation/sample.xsd";
+        for (int i = 0; i < args.length; i++) {
 
-//        for (int i = 0; i < args.length; i++) {
-//            filename = args[i];
-//            if (i != args.length - 1) {
-//                usage();
-//            }
-//        }
+            if (args[i].equals("-dtd")) {
+                dtdValidate = true;
+            } else if (args[i].equals("-xsd")) {
+                xsdValidate = true;
+            } else if (args[i].equals("-xsdss")) {
+                if (i == args.length - 1) {
+                    usage();
+                }
+                xsdValidate = true;
+                schemaSource = args[++i];
+            } else if (args[i].equals("-usage")) {
+                usage();
+            } else if (args[i].equals("-help")) {
+                usage();
+            } else {
+                filename = args[i];
+                if (i != args.length - 1) {
+                    usage();
+                }
+            }
+        }
 
         if (filename == null) {
             usage();
         }
+
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setNamespaceAware(true);
+        spf.setValidating(dtdValidate || xsdValidate);
         SAXParser saxParser = spf.newSAXParser();
         XMLReader xmlReader = saxParser.getXMLReader();
+        xmlReader.setErrorHandler(new SaxErrorHandler(System.err));
         xmlReader.setContentHandler(new SAXLocalNameCount());
         xmlReader.parse(filename);
-        xmlReader.setErrorHandler(new SErrorHandler(System.err));
+
+        if (xsdValidate) {
+            try {
+                saxParser.setProperty(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
+            } catch (SAXNotRecognizedException x) {
+                System.err.println("Error: JAXP SAXParser property not recognized: "
+                        + JAXP_SCHEMA_LANGUAGE);
+
+                System.err.println("Check to see if parser conforms to the JAXP spec.");
+                System.exit(1);
+            }
+        }
+        if (schemaSource != null) {
+            saxParser.setProperty(JAXP_SCHEMA_SOURCE, new File(schemaSource));
+        }
 
     }
 

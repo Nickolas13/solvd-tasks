@@ -14,11 +14,10 @@ public class CustomerServiceDao extends MySqlDao implements IBaseDao<CustomerSer
     public void create(CustomerService object) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO customerservice(id,location,work_from,work_till) VALUES (?,?,?,?)");
-            statement.setInt(1, object.getId());
-            statement.setString(2, object.getLocation());
-            statement.setString(3, object.getWork_from());
-            statement.setString(4, object.getWork_till());
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO customerservice(location,work_from,work_till) VALUES (?,?,?)");
+            statement.setString(1, object.getLocation());
+            statement.setString(2, object.getWork_from());
+            statement.setString(3, object.getWork_till());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

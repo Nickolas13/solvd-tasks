@@ -14,12 +14,11 @@ public class FactoriesDao extends MySqlDao implements IBaseDao<Factories> {
     public void create(Factories f) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO factories(id,name,prod_type,pa_month, company_id) VALUES (?,?,?,?,?)");
-            statement.setInt(1, f.getId());
-            statement.setString(2, f.getName());
-            statement.setString(3, f.getProd_type());
-            statement.setInt(4, f.getPa_month());
-            statement.setInt(5, f.getCompany_id());
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO factories(name,prod_type,pa_month, company_id) VALUES (?,?,?,?)");
+            statement.setString(1, f.getName());
+            statement.setString(2, f.getProd_type());
+            statement.setInt(3, f.getPa_month());
+            statement.setInt(4, f.getCompany_id());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -15,14 +15,13 @@ public class CustomerDao extends MySqlDao implements IBaseDao<Customer> {
     public void create(Customer object) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO company(id,firstname,lastname,city,phone,email,cs_id) VALUES (?,?,?,?,?,?,?)");
-            statement.setInt(1, object.getId());
-            statement.setString(2, object.getFirstname());
-            statement.setString(3, object.getLastname());
-            statement.setString(4, object.getCity());
-            statement.setInt(5, object.getPhone());
-            statement.setString(6, object.getEmail());
-            statement.setInt(7, object.getCs_id());
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO customer(firstname,lastname,city,phone,email,cs_id) VALUES (?,?,?,?,?,?)");
+            statement.setString(1, object.getFirstname());
+            statement.setString(2, object.getLastname());
+            statement.setString(3, object.getCity());
+            statement.setInt(4, object.getPhone());
+            statement.setString(5, object.getEmail());
+            statement.setInt(6, object.getCs_id());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

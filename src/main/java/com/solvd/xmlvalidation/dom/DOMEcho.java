@@ -64,6 +64,7 @@ public class DOMEcho {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
         dbf.setValidating(dtdValidate || xsdValidate);
+
         if (xsdValidate) {
             try {
                 dbf.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
@@ -79,7 +80,7 @@ public class DOMEcho {
 
         DocumentBuilder db = dbf.newDocumentBuilder();
         OutputStreamWriter errorWriter = new OutputStreamWriter(System.err, outputEncoding);
-        db.setErrorHandler(new MyErrorHandler(new PrintWriter(errorWriter, true)));
+        db.setErrorHandler(new DomErrorHandler(new PrintWriter(errorWriter, true)));
         Document doc = db.parse(new File(filename));
     }
 }
