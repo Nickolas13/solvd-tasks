@@ -1,6 +1,6 @@
 package com.solvd.mvc.dao;
 
-public interface IBaseDao<T> {
+public interface IBaseDAO<T> {
     void create(T object);
 
     T getById(int id);

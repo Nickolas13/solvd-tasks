@@ -1,7 +1,8 @@
 package com.solvd.mvc.dao.mysql;
 
 import com.solvd.mvc.dao.ConnectionPool;
-import com.solvd.mvc.dao.IBaseDao;
+import com.solvd.mvc.dao.IBaseDAO;
+import com.solvd.mvc.dao.ICustomerDAO;
 import com.solvd.mvc.tables.CustomerService;
 
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerServiceDao extends MySqlDao implements IBaseDao<CustomerService> {
+public class CustomerServiceDao extends MySqlDao implements IBaseDAO<CustomerService> {
     @Override
     public void create(CustomerService object) {
         try {
@@ -89,4 +90,6 @@ public class CustomerServiceDao extends MySqlDao implements IBaseDao<CustomerSer
             e.printStackTrace();
         }
     }
+
+
 }

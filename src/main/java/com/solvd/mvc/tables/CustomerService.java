@@ -1,10 +1,13 @@
 package com.solvd.mvc.tables;
 
+import java.util.List;
+
 public class CustomerService {
     private int id;
     private String location;
     private String work_from;
     private String work_till;
+    private List<Customer> customers;
 
     public CustomerService(String location, String work_from, String work_till) {
         this.location = location;
@@ -18,6 +21,14 @@ public class CustomerService {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
     public String getLocation() {

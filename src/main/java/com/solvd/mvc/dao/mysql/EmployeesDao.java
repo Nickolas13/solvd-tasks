@@ -1,27 +1,68 @@
 package com.solvd.mvc.dao.mysql;
 
 import com.solvd.mvc.dao.ConnectionPool;
-import com.solvd.mvc.dao.IBaseDao;
+import com.solvd.mvc.dao.IBaseDAO;
 import com.solvd.mvc.tables.Employees;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmployeesDao extends MySqlDao implements IBaseDao<Employees> {
+public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees> {
     @Override
-    public void create(Employees object) {
-
+    public void create(Employees emp) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO employees(firstname,lastname,email,company_id,factories_id,cs_id) VALUES (?,?,?,?,?,?)");
+            statement.setString(1, emp.getFirstname());
+            statement.setString(2, emp.getLastname());
+            statement.setString(3, emp.getEmail());
+            statement.setInt(4, emp.getCompany_id());
+            statement.setInt(5, emp.getFactories_id());
+            statement.setInt(6, emp.getCs_id());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public Employees getById(int id) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM employees WHERE id = ?");
+            statement.setInt(1, id);
+            ResultSet result = statement.executeQuery();
+            String output = "";
+            while (result.next()) {
+                output += result.getInt("id")
+                        + ":" + result.getString("firstname")
+                        + ":" + result.getString("lastname")
+                        + ":" + result.getString("email")
+                        + ":" + result.getInt("company_id")
+                        + ":" + result.getInt("factories_id")
+                        + ":" + result.getInt("cs_id");
+            }
+            System.out.println(output);
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public void remove(int id) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM employees WHERE id=?;");
+            statement.setInt(1, id);
+            statement.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.solvd.mvc.dao.mysql;
 
 import com.solvd.mvc.dao.ConnectionPool;
-import com.solvd.mvc.dao.IBaseDao;
+import com.solvd.mvc.dao.IBaseDAO;
 import com.solvd.mvc.tables.Factories;
 
 import java.sql.Connection;
@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FactoriesDao extends MySqlDao implements IBaseDao<Factories> {
+public class FactoriesDao extends MySqlDao implements IBaseDAO<Factories> {
     @Override
     public void create(Factories f) {
         try {

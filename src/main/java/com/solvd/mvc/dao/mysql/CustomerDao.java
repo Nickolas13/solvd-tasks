@@ -1,7 +1,8 @@
 package com.solvd.mvc.dao.mysql;
 
 import com.solvd.mvc.dao.ConnectionPool;
-import com.solvd.mvc.dao.IBaseDao;
+import com.solvd.mvc.dao.IBaseDAO;
+import com.solvd.mvc.dao.ICustomerDAO;
 import com.solvd.mvc.tables.Customer;
 
 
@@ -10,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerDao extends MySqlDao implements IBaseDao<Customer> {
+public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustomerDAO {
     @Override
     public void create(Customer object) {
         try {
@@ -107,5 +108,26 @@ public class CustomerDao extends MySqlDao implements IBaseDao<Customer> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Customer getCustomersByCsId(int id) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = conn.prepareStatement("SELECT firstname, lastname, cs_id FROM customer WHERE cs_id = ?");
+            statement.setInt(1, id);
+            ResultSet result = statement.executeQuery();
+            String output = "";
+            while (result.next()) {
+                output += result.getString("firstname")
+                        + ":" + result.getString("lastname")
+                        + ":" + result.getInt("cs_id") + "\n";
+            }
+            System.out.println(output);
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
