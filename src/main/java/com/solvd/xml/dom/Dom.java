@@ -1,4 +1,4 @@
-package com.solvd.xmlvalidation.dom;
+package com.solvd.xml.dom;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;

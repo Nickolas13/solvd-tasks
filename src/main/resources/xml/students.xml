@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<students id="1">
+    <age>1</age>
+    <firstname>bob</firstname>
+    <lastname>smith</lastname>
+    <year>0</year>
+</students>

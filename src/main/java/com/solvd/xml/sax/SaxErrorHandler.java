@@ -1,26 +1,28 @@
-package com.solvd.xmlvalidation.dom;
+package com.solvd.xml.sax;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-import java.io.PrintWriter;
+import java.io.PrintStream;
 
-public class DomErrorHandler implements ErrorHandler {
-    private PrintWriter out;
+public class SaxErrorHandler implements ErrorHandler {
+    private PrintStream out;
 
-    DomErrorHandler(PrintWriter out) {
+    SaxErrorHandler(PrintStream out) {
         this.out = out;
     }
 
     private String getParseExceptionInfo(SAXParseException spe) {
         String systemId = spe.getSystemId();
+
         if (systemId == null) {
             systemId = "null";
         }
-        String info = "URI = " + systemId
-                + " Line = " + spe.getLineNumber()
-                + " : " + spe.getMessage();
+
+        String info = "URI=" + systemId + " Line="
+                + spe.getLineNumber() + ": " + spe.getMessage();
+
         return info;
     }
 
@@ -38,5 +40,3 @@ public class DomErrorHandler implements ErrorHandler {
         throw new SAXException(message);
     }
 }
-
-

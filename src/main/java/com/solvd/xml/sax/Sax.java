@@ -1,4 +1,4 @@
-package com.solvd.xmlvalidation.sax;
+package com.solvd.xml.sax;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

@@ -1,4 +1,4 @@
-package com.solvd.xmlvalidation.sax;
+package com.solvd.xml.sax;
 
 import javax.xml.parsers.*;
 
