@@ -12,7 +12,7 @@ public class Writer {
         student.setFirstname("bob");
         student.setLastname("smith");
         student.setAge(15);
-        student.setAge(1);
+
 
         File file = new File("src/main/resources/xml/students.xml");
         JAXBContext context = JAXBContext.newInstance(Students.class);

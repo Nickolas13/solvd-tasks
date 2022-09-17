@@ -2,6 +2,7 @@ package com.solvd.mvc.dao.mysql;
 
 import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDAO;
+import com.solvd.mvc.dao.IEmployeesDAO;
 import com.solvd.mvc.tables.Employees;
 
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees> {
+public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmployeesDAO {
     @Override
     public void create(Employees emp) {
         try {
@@ -109,6 +110,26 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees> {
                     break;
 
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getEmployeesByCompanyId(int company_id) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM employees WHERE company_id = ?");
+            statement.setInt(1, company_id);
+            ResultSet result = statement.executeQuery();
+            String output = "";
+            while (result.next()) {
+                output += result.getString("firstname")
+                        + ":" + result.getString("lastname")
+                        + ":" + result.getInt("company_id");
+            }
+            System.out.println(output);
 
         } catch (SQLException e) {
             e.printStackTrace();

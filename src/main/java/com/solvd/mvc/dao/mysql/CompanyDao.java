@@ -4,6 +4,7 @@ package com.solvd.mvc.dao.mysql;
 import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDAO;
 
+import com.solvd.mvc.dao.ICompanyDAO;
 import com.solvd.mvc.tables.Company;
 
 import java.sql.Connection;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 
 
 //Data Access Objects
-public class CompanyDao extends MySqlDao implements IBaseDAO<Company> {
+public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyDAO {
     @Override
     public Company getById(int id) {
         try {
@@ -104,4 +105,24 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company> {
     }
 
 
+    @Override
+    public void getCompaniesByLocation(String location) {
+        try {
+            Connection conn = ConnectionPool.getInstance().retrieve();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM company WHERE location = ?");
+            statement.setString(1, location);
+            ResultSet result = statement.executeQuery();
+            String output = "";
+            while (result.next()) {
+                output += result.getString("name")
+                        + ":" + result.getString("location")
+                        + ":" + result.getString("phone")
+                        + ":" + result.getString("email");
+            }
+            System.out.println(output);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,12 +1,8 @@
 package com.solvd.xml.jaxb;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "students")
-@XmlType(propOrder = {})
 public class Students {
     private int id;
     private String firstname;
