@@ -42,23 +42,36 @@ public class Batis {
         SqlSession session = sqlSessionFactory.openSession();
 
         //Creating student object
-        Student student = new Student("jonathan", "RE", 78, 325461, "jonathan@gmial.com");
+        Student student = new Student("harry", "TX", 25, 654231, "harry@gmial.com");
 
         //select all students
-        selectAll(session);
+//        selectAll(session);
+//        close(session);
 
 
         //Inserting student data
-        insert(session, student);
+//        insert(session, student);
+//        close(session);
+
+
+        //Updating elements
+        //get target element by id
+//        Student student1 = (Student) session.selectOne("Student.getById", 2);
+//        System.out.println("current details of student");
+//        System.out.println(student1);
+
+        //Update element details
+//        student1.setName("william");
+//        student1.setEmail("william@gmail.com");
+//        student1.setPhone(87934321);
+//        session.update("Student.update", student1);
+//        System.out.println("updated successfully");
+//        close(session);
+
+        //Deleting elements
+        session.delete("Student.deleteById", 3);
         close(session);
-
-        //updating elements
-
-        session.update();
-
-
-        //deleting elements
-//        session.delete();
+        System.out.println("Deleted element");
     }
 
 

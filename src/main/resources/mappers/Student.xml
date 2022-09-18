@@ -5,7 +5,30 @@
 
     <resultMap id="result" type="Student">
         <result property="id" column="ID"/>
+        <result property="name" column="NAME"/>
+        <result property="branch" column="BRANCH"/>
+        <result property="percentage" column="PERCENTAGE"/>
+        <result property="phone" column="PHONE"/>
+        <result property="email" column="EMAIL"/>
     </resultMap>
+
+    <!--delete elements by id-->
+    <delete id="deleteById" parameterType="int">
+        DELETE
+        FROM student
+        WHERE ID = #{id};
+    </delete>
+
+    <!--update elements-->
+    <update id="update" parameterType="Student">
+        UPDATE student
+        SET NAME       = #{name},
+            BRANCH     = #{branch},
+            PERCENTAGE = #{percentage},
+            PHONE      = #{phone},
+            EMAIL      = #{email}
+        WHERE ID = #{id};
+    </update>
 
     <!--Select all elements mapper-->
     <select id="getAll" resultMap="result">

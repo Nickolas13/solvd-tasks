@@ -14,8 +14,8 @@ public class Student {
     public Student(String name, String branch, int percentage, int phone, String email) {
         super();
         this.name = name;
-        this.branch = branch;
-        this.percentage = percentage;
+        this.setBranch(branch);
+        this.setPercentage(percentage);
         this.phone = phone;
         this.email = email;
     }
@@ -66,5 +66,18 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Id = ").append(id).append(" - ");
+        sb.append("Name = ").append(name).append(" - ");
+        sb.append("Branch = ").append(branch).append(" - ");
+        sb.append("Percentage = ").append(percentage).append(" - ");
+        sb.append("Phone = ").append(phone).append(" - ");
+        sb.append("Email = ").append(email);
+
+        return sb.toString();
     }
 }
