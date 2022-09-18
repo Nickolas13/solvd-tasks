@@ -5,7 +5,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 
-public class Writer {
+public class Marshal {
     public static void main(String[] args) throws JAXBException {
         Students student = new Students();
         student.setId(1);

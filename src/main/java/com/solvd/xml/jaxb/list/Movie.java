@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "movie")
 public class Movie {
+
     private String name;
     private String director;
     private int releaseYear;

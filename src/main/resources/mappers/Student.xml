@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Student">
+
+    <resultMap id="result" type="Student">
+        <result property="id" column="ID"/>
+    </resultMap>
+
+    <!--Select all elements mapper-->
+    <select id="getAll" resultMap="result">
+        SELECT *
+        FROM STUDENT;
+    </select>
+
+    <!-- Select by id mapper-->
+    <select id="getById" parameterType="int" resultMap="result">
+        SELECT *
+        FROM STUDENT
+        WHERE ID = #{id};
+    </select>
+
+
+    <!-- Insert element mapper-->
+    <insert id="insert" parameterType="Student">
+        INSERT INTO student (NAME, BRANCH, PERCENTAGE, PHONE, EMAIL) VALUES (#{name}, #{branch}, #{percentage},
+        #{phone}, #{email});
+
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+</mapper>
+
