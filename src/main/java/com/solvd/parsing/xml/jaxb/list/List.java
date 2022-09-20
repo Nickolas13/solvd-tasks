@@ -1,4 +1,4 @@
-package com.solvd.xml.jaxb.list;
+package com.solvd.parsing.xml.jaxb.list;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

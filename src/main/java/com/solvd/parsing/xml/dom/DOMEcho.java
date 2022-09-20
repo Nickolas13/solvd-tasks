@@ -1,4 +1,4 @@
-package com.solvd.xml.dom;
+package com.solvd.parsing.xml.dom;
 
 //exceptions while parsing
 

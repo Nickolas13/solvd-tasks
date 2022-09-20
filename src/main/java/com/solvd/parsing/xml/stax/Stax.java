@@ -1,4 +1,4 @@
-package com.solvd.xml.stax;
+package com.solvd.parsing.xml.stax;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;

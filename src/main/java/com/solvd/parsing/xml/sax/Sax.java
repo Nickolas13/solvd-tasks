@@ -1,4 +1,4 @@
-package com.solvd.xml.sax;
+package com.solvd.parsing.xml.sax;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

@@ -2,14 +2,13 @@ package com.solvd.other.fileutils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 import org.apache.commons.io.FileUtils;
 
 public class CreatingFile {
     public static void main(String[] args) {
         //create file
-        File newFile = new File("filename.txt");
+        File newFile = new File("fileutil/wordcount/filename.txt");
         try {
             FileUtils.touch(newFile);
             if(newFile.exists()) {

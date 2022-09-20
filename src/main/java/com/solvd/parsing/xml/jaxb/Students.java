@@ -1,4 +1,4 @@
-package com.solvd.xml.jaxb;
+package com.solvd.parsing.xml.jaxb;
 
 import javax.xml.bind.annotation.*;
 

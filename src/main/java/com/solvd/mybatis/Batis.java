@@ -6,9 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
-import java.lang.reflect.Field;
 import java.util.List;
 
 public class Batis {
@@ -37,7 +35,7 @@ public class Batis {
     }
 
     public static void main(String[] args) throws IOException {
-        Reader reader = Resources.getResourceAsReader("SqlMapConfig.xml");
+        Reader reader = Resources.getResourceAsReader("mybatis/SqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         SqlSession session = sqlSessionFactory.openSession();
 
@@ -69,9 +67,9 @@ public class Batis {
 //        close(session);
 
         //Deleting elements
-        session.delete("Student.deleteById", 3);
-        close(session);
-        System.out.println("Deleted element");
+//        session.delete("Student.deleteById", 3);
+//        close(session);
+//        System.out.println("Deleted element");
     }
 
 

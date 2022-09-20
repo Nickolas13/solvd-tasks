@@ -23,7 +23,7 @@ public class CountUniqueWords {
 
             //reading file and storing each word separated by space in string array with split
             String[] words = FileUtils.readFileToString(
-                    new File("src/main/resources/filename.txt"),
+                    new File("src/main/resources/fileutil/wordcount/filename.txt"),
                     StandardCharsets.UTF_8.name()).split("[\\s,():]+");
 
             for (String w : words) {
@@ -40,7 +40,7 @@ public class CountUniqueWords {
 
 
             //storing result in separate text file
-            File file = new File("src/main/resources/word-count.txt");
+            File file = new File("src/main/resources/fileutil/wordcount/word-count.txt");
             String result = "";
             for (Map.Entry<String, Integer> entry : wordMap.entrySet()) {
                 String key = entry.getKey();
