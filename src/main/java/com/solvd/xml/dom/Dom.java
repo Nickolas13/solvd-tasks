@@ -13,7 +13,7 @@ public class Dom {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File("src/main/resources/validation/sample.xml"));
+        Document document = builder.parse(new File("src/main/resources/xml/sample.xml"));
 
         Element element = document.getDocumentElement();
         printElements(element.getChildNodes(), 0);

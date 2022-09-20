@@ -9,6 +9,10 @@ public class Employees {
     private int factories_id;
     private int cs_id;
 
+    public Employees() {
+
+    }
+
     public Employees(String firstname, String lastname, String email, int company_id, int factories_id, int cs_id) {
         this.firstname = firstname;
         this.lastname = lastname;

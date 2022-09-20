@@ -9,6 +9,9 @@ public class CustomerService {
     private String work_till;
     private List<Customer> customers;
 
+    public CustomerService() {
+    }
+
     public CustomerService(String location, String work_from, String work_till) {
         this.location = location;
         this.work_from = work_from;

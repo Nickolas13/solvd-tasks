@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 public class Stax {
     public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
         XMLInputFactory factory = XMLInputFactory.newInstance();
-        XMLStreamReader parser = factory.createXMLStreamReader(new FileInputStream("src/main/resources/validation/sample.xml"));
+        XMLStreamReader parser = factory.createXMLStreamReader(new FileInputStream("src/main/resources/xml/sample.xml"));
 
         while (parser.hasNext()) {
             int event = parser.next();

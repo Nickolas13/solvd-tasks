@@ -37,14 +37,23 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             String output = "";
+            Customer customer = new Customer();
             while (result.next()) {
                 output += result.getInt("id")
                         + ":" + result.getString("firstname")
                         + ":" + result.getString("lastname")
                         + ":" + result.getString("city")
-                        + ":" + result.getString("phone")
+                        + ":" + result.getInt("phone")
                         + ":" + result.getString("email")
-                        + ":" + result.getString("cs_id");
+                        + ":" + result.getInt("cs_id");
+
+                customer.setId(result.getInt("id"));
+                customer.setFirstname(result.getString("firstname"));
+                customer.setLastname(result.getString("lastname"));
+                customer.setCity(result.getString("city"));
+                customer.setPhone(result.getInt("phone"));
+                customer.setEmail(result.getString("email"));
+                customer.setCs_id(result.getInt("cs_id"));
             }
             System.out.println(output);
             return null;
@@ -118,10 +127,19 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             String output = "";
+            Customer customer = new Customer();
             while (result.next()) {
                 output += result.getString("firstname")
                         + ":" + result.getString("lastname")
                         + ":" + result.getInt("cs_id") + "\n";
+
+                customer.setId(result.getInt("id"));
+                customer.setFirstname(result.getString("firstname"));
+                customer.setLastname(result.getString("lastname"));
+                customer.setCity(result.getString("city"));
+                customer.setPhone(result.getInt("phone"));
+                customer.setEmail(result.getString("email"));
+                customer.setCs_id(result.getInt("cs_id"));
             }
             System.out.println(output);
             return null;

@@ -7,6 +7,10 @@ public class Factories {
     private int pa_month;
     private int company_id;
 
+    public Factories() {
+
+    }
+
     public Factories(String name, String prod_type, int pa_month, int company_id) {
         this.name = name;
         this.prod_type = prod_type;

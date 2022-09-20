@@ -43,10 +43,10 @@ public class Batis {
 
         //Creating student object
         Student student = new Student("harry", "TX", 25, 654231, "harry@gmial.com");
-
-        //select all students
-//        selectAll(session);
-//        close(session);
+//
+//        select all students
+        selectAll(session);
+        close(session);
 
 
         //Inserting student data

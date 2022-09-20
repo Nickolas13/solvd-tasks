@@ -10,6 +10,9 @@ public class Company {
     private String email;
     private List<Factories> factories;
 
+    public Company() {
+    }
+
     public Company(String name, String location, int phone, String email) {
         this.name = name;
         this.location = location;

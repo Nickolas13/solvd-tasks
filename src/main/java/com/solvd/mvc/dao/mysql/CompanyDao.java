@@ -23,15 +23,22 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             String output = "";
+            Company company = new Company();
             while (result.next()) {
                 output += result.getInt("id")
                         + ":" + result.getString("name")
                         + ":" + result.getString("location")
                         + ":" + result.getString("phone")
                         + ":" + result.getString("email");
+
+                company.setId(result.getInt("id"));
+                company.setName(result.getString("name"));
+                company.setLocation(result.getString("location"));
+                company.setPhone(result.getInt("phone"));
+                company.setEmail(result.getString("email"));
             }
             System.out.println(output);
-            return null;
+            return company;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -106,23 +113,31 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
 
 
     @Override
-    public void getCompaniesByLocation(String location) {
+    public Company getCompaniesByLocation(String location) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM company WHERE location = ?");
             statement.setString(1, location);
             ResultSet result = statement.executeQuery();
             String output = "";
+            Company company = new Company();
             while (result.next()) {
                 output += result.getString("name")
                         + ":" + result.getString("location")
                         + ":" + result.getString("phone")
                         + ":" + result.getString("email");
+
+                company.setId(result.getInt("id"));
+                company.setName(result.getString("name"));
+                company.setLocation(result.getString("location"));
+                company.setPhone(result.getInt("phone"));
+                company.setEmail(result.getString("email"));
             }
             System.out.println(output);
-
+            return company;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

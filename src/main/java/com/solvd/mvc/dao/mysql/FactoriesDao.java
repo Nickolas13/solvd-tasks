@@ -33,15 +33,23 @@ public class FactoriesDao extends MySqlDao implements IBaseDAO<Factories> {
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             String output = "";
+            Factories factory = new Factories();
             while (result.next()) {
                 output += result.getInt("id")
                         + ":" + result.getString("name")
                         + ":" + result.getString("prod_type")
-                        + ":" + result.getString("pa_month")
+                        + ":" + result.getInt("pa_month")
                         + ":" + result.getInt("company_id");
+
+                factory.setId(result.getInt("id"));
+                factory.setName(result.getString("name"));
+                factory.setProd_type(result.getString("prod_type"));
+                factory.setPa_month(result.getInt("pa_month"));
+                factory.setCompany_id(result.getInt("company_id"));
+
             }
             System.out.println(output);
-            return null;
+            return factory;
         } catch (SQLException e) {
             e.printStackTrace();
         }

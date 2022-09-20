@@ -36,6 +36,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             String output = "";
+            Employees employee = new Employees();
             while (result.next()) {
                 output += result.getInt("id")
                         + ":" + result.getString("firstname")
@@ -44,6 +45,15 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
                         + ":" + result.getInt("company_id")
                         + ":" + result.getInt("factories_id")
                         + ":" + result.getInt("cs_id");
+
+                employee.setId(result.getInt("id"));
+                employee.setFirstname(result.getString("firstname"));
+                employee.setLastname(result.getString("lastname"));
+                employee.setEmail(result.getString("email"));
+                employee.setCompany_id(result.getInt("company_id"));
+                employee.setFactories_id(result.getInt("factories_id"));
+                employee.setCs_id(result.getInt("cs_id"));
+
             }
             System.out.println(output);
             return null;
@@ -117,22 +127,32 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
     }
 
     @Override
-    public void getEmployeesByCompanyId(int company_id) {
+    public Employees getEmployeesByCompanyId(int company_id) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM employees WHERE company_id = ?");
             statement.setInt(1, company_id);
             ResultSet result = statement.executeQuery();
             String output = "";
+            Employees employee = new Employees();
             while (result.next()) {
                 output += result.getString("firstname")
                         + ":" + result.getString("lastname")
                         + ":" + result.getInt("company_id");
+
+                employee.setId(result.getInt("id"));
+                employee.setFirstname(result.getString("firstname"));
+                employee.setLastname(result.getString("lastname"));
+                employee.setEmail(result.getString("email"));
+                employee.setCompany_id(result.getInt("company_id"));
+                employee.setFactories_id(result.getInt("factories_id"));
+                employee.setCs_id(result.getInt("cs_id"));
             }
             System.out.println(output);
-
+            return employee;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

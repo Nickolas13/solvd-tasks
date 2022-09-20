@@ -3,6 +3,7 @@ package com.solvd.mvc.dao.mysql;
 import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDAO;
 import com.solvd.mvc.dao.ICustomerDAO;
+import com.solvd.mvc.tables.Customer;
 import com.solvd.mvc.tables.CustomerService;
 
 import java.sql.Connection;
@@ -33,14 +34,20 @@ public class CustomerServiceDao extends MySqlDao implements IBaseDAO<CustomerSer
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             String output = "";
+            CustomerService service = new CustomerService();
             while (result.next()) {
                 output += result.getInt("id")
                         + ":" + result.getString("location")
                         + ":" + result.getString("work_From")
                         + ":" + result.getString("work_till");
+
+                service.setId(result.getInt("id"));
+                service.setLocation(result.getString("location"));
+                service.setWork_from(result.getString("work_From"));
+                service.setWork_till(result.getString("work_till"));
             }
             System.out.println(output);
-            return null;
+            return service;
         } catch (SQLException e) {
             e.printStackTrace();
         }

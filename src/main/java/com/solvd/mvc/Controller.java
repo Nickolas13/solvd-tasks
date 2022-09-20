@@ -3,10 +3,15 @@ package com.solvd.mvc;
 
 import com.solvd.mvc.dao.mysql.*;
 import com.solvd.mvc.tables.*;
+import com.sun.xml.bind.v2.runtime.reflect.Accessor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.Field;
 import java.sql.SQLException;
 
 public class Controller {
+    private final static Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         CompanyDao company = new CompanyDao();
@@ -35,14 +40,15 @@ public class Controller {
 //
 //
 //        //Get Elements By Id
-//        company.getById(5);
+        Company company1 = company.getById(5);
+        company.create(company1);
 //        customer.getById(3);
 //        cs.getById(2);
 //        employee.getById(4);
 //        factory.getById(1);
 
         //Get Customers By Customer Service ID
-        customer.getCustomersByCsId(5);
+//        customer.getCustomersByCsId(5);
 
 
         //Remove Elements By Id

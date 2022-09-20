@@ -33,6 +33,6 @@ public class Sax {
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
-        parser.parse(new File("src/main/resources/validation/sample.xml"), handler);
+        parser.parse(new File("src/main/resources/xml/sample.xml"), handler);
     }
 }

@@ -4,6 +4,6 @@ package com.solvd.mvc.dao;
 import com.solvd.mvc.tables.Company;
 
 public interface ICompanyDAO extends IBaseDAO<Company> {
-    void getCompaniesByLocation(String Location);
+    Company getCompaniesByLocation(String Location);
 
 }
