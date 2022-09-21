@@ -1,0 +1,19 @@
+{
+  "name": "bobby",
+  "age": 45,
+  "position": [
+    "Founder",
+    "CEO",
+    "Designer"
+  ],
+  "skills": [
+    "java",
+    "selenium",
+    "carina"
+  ],
+  "salary": {
+    "2024": 40000,
+    "2023": 20000,
+    "2022": 10000
+  }
+}
