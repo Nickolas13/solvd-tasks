@@ -50,4 +50,6 @@ public class Staff {
     public void setSalary(Map<String, BigDecimal> salary) {
         this.salary = salary;
     }
+
+
 }

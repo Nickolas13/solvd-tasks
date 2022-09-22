@@ -4,6 +4,8 @@ import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDAO;
 import com.solvd.mvc.dao.ICustomerDAO;
 import com.solvd.mvc.tables.Customer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import java.sql.Connection;
@@ -12,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustomerDAO {
+    private static final Logger logger = LogManager.getLogger(CustomerDao.class);
+
     @Override
     public void create(Customer object) {
         try {
@@ -58,7 +62,7 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
             System.out.println(output);
             return null;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return null;
     }
@@ -72,7 +76,7 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -115,7 +119,7 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -144,7 +148,7 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
             System.out.println(output);
             return null;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return null;
     }

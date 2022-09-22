@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Company">
+    <resultMap id="CompanyResultMap" type="Company">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="location" column="location"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+    </resultMap>
+
+    <!-- Select by id mapper-->
+    <select id="getById" parameterType="int" resultMap="CompanyResultMap">
+        SELECT id, name, location, phone, email
+        FROM company
+        WHERE ID = #{id};
+    </select>
+
+    <!--Create new element-->
+    <insert id="create" parameterType="" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO company (name, location, phone, email)
+        VALUES (#{name}, #{location}, #{phone}, #{email});
+    </insert>
+</mapper>

@@ -1,11 +1,14 @@
 package com.solvd.mvc.dao.mysql;
 
 
+import com.solvd.animal.animalclasses.Main;
 import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDAO;
 
 import com.solvd.mvc.dao.ICompanyDAO;
 import com.solvd.mvc.tables.Company;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +18,8 @@ import java.sql.SQLException;
 
 //Data Access Objects
 public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyDAO {
+    private static final Logger logger = LogManager.getLogger(CompanyDao.class);
+
     @Override
     public Company getById(int id) {
         try {
@@ -40,7 +45,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
             System.out.println(output);
             return company;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return null;
     }
@@ -57,7 +62,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
             statement.setString(4, com.getEmail());
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -70,7 +75,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -107,7 +112,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -136,7 +141,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
             System.out.println(output);
             return company;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return null;
     }

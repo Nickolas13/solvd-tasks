@@ -3,6 +3,9 @@ package com.solvd.parsing.json;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.solvd.mvc.dao.mysql.CompanyDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Json {
+    private static final Logger logger = LogManager.getLogger(Json.class);
+
     public static void main(String[] args) {
         read();
     }
@@ -35,7 +40,6 @@ public class Json {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-
             // JSON file to Java object
             Staff staff = mapper.readValue(new File("src/main/resources/jackson/staff.json"), Staff.class);
 
@@ -53,7 +57,7 @@ public class Json {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 

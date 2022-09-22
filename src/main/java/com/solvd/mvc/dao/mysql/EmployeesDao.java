@@ -4,6 +4,8 @@ import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDAO;
 import com.solvd.mvc.dao.IEmployeesDAO;
 import com.solvd.mvc.tables.Employees;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmployeesDAO {
+    private static final Logger logger = LogManager.getLogger(EmployeesDao.class);
+
     @Override
     public void create(Employees emp) {
         try {
@@ -24,7 +28,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
             statement.setInt(6, emp.getCs_id());
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -58,7 +62,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
             System.out.println(output);
             return null;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return null;
     }
@@ -72,7 +76,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -122,7 +126,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -151,7 +155,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
             System.out.println(output);
             return employee;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return null;
     }

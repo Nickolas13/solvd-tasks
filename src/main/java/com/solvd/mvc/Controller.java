@@ -40,8 +40,8 @@ public class Controller {
 //
 //
 //        //Get Elements By Id
-        Company company1 = company.getById(5);
-        company.create(company1);
+        company.getById(5);
+
 //        customer.getById(3);
 //        cs.getById(2);
 //        employee.getById(4);

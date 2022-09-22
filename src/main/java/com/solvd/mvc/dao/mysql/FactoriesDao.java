@@ -3,6 +3,8 @@ package com.solvd.mvc.dao.mysql;
 import com.solvd.mvc.dao.ConnectionPool;
 import com.solvd.mvc.dao.IBaseDAO;
 import com.solvd.mvc.tables.Factories;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FactoriesDao extends MySqlDao implements IBaseDAO<Factories> {
+    private static final Logger logger = LogManager.getLogger(FactoriesDao.class);
+
     @Override
     public void create(Factories f) {
         try {
@@ -51,7 +55,7 @@ public class FactoriesDao extends MySqlDao implements IBaseDAO<Factories> {
             System.out.println(output);
             return factory;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return null;
     }
@@ -65,7 +69,7 @@ public class FactoriesDao extends MySqlDao implements IBaseDAO<Factories> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -102,7 +106,7 @@ public class FactoriesDao extends MySqlDao implements IBaseDAO<Factories> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 }

@@ -1,2 +1,4 @@
-package com.solvd.service;public class IUserService {
+package com.solvd.service;
+
+public class IUserService {
 }
