@@ -67,16 +67,14 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
     }
 
     @Override
-    public void remove(int id) {
-        try {
-            Connection conn = ConnectionPool.getInstance().retrieve();
-            PreparedStatement statement = conn.prepareStatement("DELETE FROM company WHERE id=?;");
-            statement.setInt(1, id);
-            statement.executeUpdate();
+    public void remove(int id) throws SQLException {
 
-        } catch (SQLException e) {
-            logger.error(e);
-        }
+        Connection conn = ConnectionPool.getInstance().retrieve();
+        PreparedStatement statement = conn.prepareStatement("DELETE FROM company WHERE id=?;");
+        statement.setInt(1, id);
+        statement.executeUpdate();
+
+
     }
 
     @Override

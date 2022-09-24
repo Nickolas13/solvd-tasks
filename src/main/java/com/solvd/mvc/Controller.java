@@ -23,7 +23,7 @@ public class Controller {
 //
 //        //Create Elements
 //        company.create(new Company("comp", "mars", 4564787, "asdsa@gmail.com"));
-//        customer.create(new Customer("bob", "smith", "new york", 645646, "smith@gmail.com", 2));
+//        customer.create(new Customer("bob", "smith", "new york", 645646, "smith@gmail.com", 1));
 //        cs.create(new CustomerService("new zealand", "thursday", "friday"));
 //        employee.create(new Employees("will", "lenon", "lenon@gmail.com", 1, 2, 3));
 //        factory.create(new Factories("clothing", "suits", 30000, 2));
@@ -40,7 +40,7 @@ public class Controller {
 //
 //
 //        //Get Elements By Id
-        company.getById(5);
+//        company.getById(5);
 
 //        customer.getById(3);
 //        cs.getById(2);
@@ -52,8 +52,11 @@ public class Controller {
 
 
         //Remove Elements By Id
-//        customer.remove(5);
-//        employee.remove(3);
+//        customer.remove(6);
+//        employee.remove(5);
+//        company.remove(1);
+//        cs.remove(1);
+//        factory.remove(1);
 
 
     }

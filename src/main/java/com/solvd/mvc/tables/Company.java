@@ -8,7 +8,7 @@ public class Company {
     private String location;
     private int phone;
     private String email;
-    private List<Factories> factories;
+
 
     public Company() {
     }
@@ -60,12 +60,5 @@ public class Company {
         this.email = email;
     }
 
-    public List<Factories> getFactories() {
-        return factories;
-    }
-
-    public void setFactories(List<Factories> factories) {
-        this.factories = factories;
-    }
 
 }

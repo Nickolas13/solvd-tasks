@@ -17,16 +17,16 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
     private static final Logger logger = LogManager.getLogger(CustomerDao.class);
 
     @Override
-    public void create(Customer object) {
+    public void create(Customer customer) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
             PreparedStatement statement = conn.prepareStatement("INSERT INTO customer(firstname,lastname,city,phone,email,cs_id) VALUES (?,?,?,?,?,?)");
-            statement.setString(1, object.getFirstname());
-            statement.setString(2, object.getLastname());
-            statement.setString(3, object.getCity());
-            statement.setInt(4, object.getPhone());
-            statement.setString(5, object.getEmail());
-            statement.setInt(6, object.getCs_id());
+            statement.setString(1, customer.getFirstname());
+            statement.setString(2, customer.getLastname());
+            statement.setString(3, customer.getCity());
+            statement.setInt(4, customer.getPhone());
+            statement.setString(5, customer.getEmail());
+            statement.setInt(6, customer.getCs_id());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
