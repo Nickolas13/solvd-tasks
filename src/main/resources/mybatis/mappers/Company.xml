@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="Company">
+
     <resultMap id="CompanyResultMap" type="Company">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
@@ -17,8 +19,25 @@
     </select>
 
     <!--Create new element-->
-    <insert id="create" parameterType="" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="Company" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO company (name, location, phone, email)
         VALUES (#{name}, #{location}, #{phone}, #{email});
     </insert>
+
+    <!--Update element-->
+    <update id="update" parameterType="Company">
+        UPDATE company
+        SET id       = #{id},
+            name     = #{name},
+            location = #{location},
+            phone    = #{phone},
+            email    = #{email}
+    </update>
+
+    <!--delete element-->
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM company
+        WHERE id = #{id}
+    </delete>
 </mapper>

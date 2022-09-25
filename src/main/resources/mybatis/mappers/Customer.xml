@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Customer">
+
+    <resultMap id="CustomerResultMap" type="Customer">
+        <id property="id" column="id"/>
+        <result property="firstname" column="firstname"/>
+        <result property="lastname" column="lastname"/>
+        <result property="city" column="city"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="cs_id" column="cs_id"/>
+    </resultMap>
+
+    <!-- Select by id mapper-->
+    <select id="getById" parameterType="int" resultMap="CustomerResultMap">
+        SELECT id, firstname, lastname, phone, email
+        FROM customer
+        WHERE ID = #{id};
+    </select>
+
+    <!--Create new element-->
+    <insert id="insert" parameterType="Customer" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO customer (firstname, lastname, city, phone, email, cs_id)
+        VALUES (#{firstname}, #{lastname}, #{city}, #{phone}, #{email}, #{cs_id});
+    </insert>
+
+    <!--Update element-->
+    <update id="update" parameterType="Customer">
+        UPDATE customer
+        SET id        = #{id},
+            firstname = #{firstname},
+            lastname  = #{lastname},
+            city      = #{city},
+            phone     = #{phone},
+            email     = #{email},
+            cs_id     = #{cs_id}
+    </update>
+
+    <!--delete element-->
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM customer
+        WHERE id = #{id}
+    </delete>
+</mapper>

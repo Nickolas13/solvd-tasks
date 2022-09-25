@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CustomerService">
+
+    <resultMap id="CustomerServiceResultMap" type="CustomerService">
+        <id property="id" column="id"/>
+        <result property="location" column="location"/>
+        <result property="work_from" column="work_from"/>
+        <result property="work_till" column="work_till"/>
+    </resultMap>
+
+    <!-- Select by id mapper-->
+    <select id="getById" parameterType="int" resultMap="CustomerServiceResultMap">
+        SELECT id, location, work_from, work_till
+        FROM customerservice
+        WHERE ID = #{id};
+    </select>
+
+    <!--Create new element-->
+    <insert id="insert" parameterType="CustomerService" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO customerservice (location, work_from, work_till)
+        VALUES (#{location}, #{work_from}, #{work_till});
+    </insert>
+
+    <!--Update element-->
+    <update id="update" parameterType="CustomerService">
+        UPDATE customerservice
+        SET id        = #{id},
+            location  = #{location},
+            work_from = #{work_from},
+            work_till = #{work_till}
+    </update>
+
+    <!--delete element-->
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM customerservice
+        WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Employees">
+
+    <resultMap id="EmployeesServiceResultMap" type="Employees">
+        <id property="id" column="id"/>
+        <result property="firstname" column="firstname"/>
+        <result property="lastname" column="lastname"/>
+        <result property="email" column="email"/>
+        <result property="company_id" column="company_id"/>
+        <result property="factories_id" column="factories_id"/>
+        <result property="cs_id" column="cs_id"/>
+    </resultMap>
+
+    <!-- Select by id mapper-->
+    <select id="getById" parameterType="int" resultMap="EmployeeResultMap">
+        SELECT id, firstname, lastname, email, company_id, factories_id, cs_id
+        FROM employees
+        WHERE ID = #{id};
+    </select>
+
+    <!--Create new element-->
+    <insert id="insert" parameterType="Employees" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO employees (firstname, lastname, email, company_id, factories_id, cs_id)
+        VALUES (#{firstname}, #{lastname}, #{email}, #{company_id}, #{factories_id}, #{cs_id});
+    </insert>
+
+    <!--Update element-->
+    <update id="update" parameterType="Employees">
+        UPDATE employees
+        SET id           = #{id},
+            firstname    = #{firstname},
+            lastname     = #{lastname},
+            email        = #{email},
+            company_id   = #{company_id},
+            factories_id = #{factories_id},
+            cs_id        = #{cs_id}
+    </update>
+
+    <!--delete element-->
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM employees
+        WHERE id = #{id}
+    </delete>
+</mapper>

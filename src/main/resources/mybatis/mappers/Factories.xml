@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Factories">
+
+    <resultMap id="FactoriesServiceResultMap" type="Factories">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="prod_type" column="prod_type"/>
+        <result property="pa_month" column="pa_month"/>
+        <result property="company_id" column="company_id"/>
+    </resultMap>
+
+    <!-- Select by id mapper-->
+    <select id="getById" parameterType="int" resultMap="FactoriesResultMap">
+        SELECT id, name, prod_type, pa_month, company_id
+        FROM factories
+        WHERE ID = #{id};
+    </select>
+
+    <!--Create new element-->
+    <insert id="insert" parameterType="Factories" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO factories (name, prod_type, pa_month, company_id)
+        VALUES (#{name}, #{prod_type}, #{pa_month}, #{company_id});
+    </insert>
+
+    <!--Update element-->
+    <update id="update" parameterType="Factories">
+        UPDATE factories
+        SET id         = #{id},
+            name       = #{name},
+            prod_type  = #{prod_type},
+            pa_month   = #{pa_month},
+            company_id = #{company_id}
+    </update>
+
+    <!--delete element-->
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM factories
+        WHERE id = #{id}
+    </delete>
+</mapper>

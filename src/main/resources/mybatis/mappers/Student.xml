@@ -20,7 +20,7 @@
     </delete>
 
     <!--update elements-->
-    <update id="update" parameterType="Student">
+    <update id="update" parameterType="Student, int">
         UPDATE student
         SET NAME       = #{name},
             BRANCH     = #{branch},
@@ -45,13 +45,10 @@
 
 
     <!-- Insert element mapper-->
-    <insert id="insert" parameterType="Student">
-        INSERT INTO student (NAME, BRANCH, PERCENTAGE, PHONE, EMAIL) VALUES (#{name}, #{branch}, #{percentage},
-        #{phone}, #{email});
-
-        <selectKey keyProperty="id" resultType="int" order="AFTER">
-            select last_insert_id() as id
-        </selectKey>
+    <insert id="insert" parameterType="Student" useGeneratedKeys="true">
+        INSERT INTO student (NAME, BRANCH, PERCENTAGE, PHONE, EMAIL)
+        VALUES (#{name}, #{branch}, #{percentage},
+                #{phone}, #{email});
     </insert>
 </mapper>
 
