@@ -7,14 +7,14 @@ public class Company {
     private int id;
     private String name;
     private String location;
-    private int phone;
+    private String phone;
     private String email;
 
 
     public Company() {
     }
 
-    public Company(String name, String location, int phone, String email) {
+    public Company(String name, String location, String phone, String email) {
         this.name = name;
         this.location = location;
         this.phone = phone;
@@ -45,11 +45,11 @@ public class Company {
         this.location = location;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

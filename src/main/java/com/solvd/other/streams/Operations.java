@@ -1,4 +1,4 @@
-package com.solvd.lambda.streams;
+package com.solvd.other.streams;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

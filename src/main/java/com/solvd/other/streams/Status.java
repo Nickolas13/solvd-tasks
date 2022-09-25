@@ -1,4 +1,4 @@
-package com.solvd.lambda.streams;
+package com.solvd.other.streams;
 
 public enum Status {
     ACTIVE,

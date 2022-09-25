@@ -39,7 +39,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
                 company.setId(result.getInt("id"));
                 company.setName(result.getString("name"));
                 company.setLocation(result.getString("location"));
-                company.setPhone(result.getInt("phone"));
+                company.setPhone(result.getString("phone"));
                 company.setEmail(result.getString("email"));
             }
             System.out.println(output);
@@ -58,7 +58,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
 
             statement.setString(1, com.getName());
             statement.setString(2, com.getLocation());
-            statement.setInt(3, com.getPhone());
+            statement.setString(3, com.getPhone());
             statement.setString(4, com.getEmail());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -97,7 +97,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
                     break;
                 case "phone":
                     statement = conn.prepareStatement("UPDATE company SET phone = ? WHERE id = ?;");
-                    statement.setInt(1, com.getPhone());
+                    statement.setString(1, com.getPhone());
                     statement.setInt(2, com.getId());
                     statement.executeUpdate();
                     break;
@@ -133,7 +133,7 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
                 company.setId(result.getInt("id"));
                 company.setName(result.getString("name"));
                 company.setLocation(result.getString("location"));
-                company.setPhone(result.getInt("phone"));
+                company.setPhone(result.getString("phone"));
                 company.setEmail(result.getString("email"));
             }
             System.out.println(output);

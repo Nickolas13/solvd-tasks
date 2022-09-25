@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.solvd.mybatis.service.interfaces.ICompanyService">
+<mapper namespace="com.solvd.mybatis.service.services.mappers.ICompanyMapper">
 
     <resultMap id="CompanyResultMap" type="Company">
         <result property="id" column="id"/>
@@ -18,21 +18,23 @@
         WHERE id = #{id};
     </select>
 
+
+    <!--Update element-->
+    <update id="update" parameterType="Company">
+        UPDATE company
+        SET name     = #{name},
+            location = #{location},
+            phone    = #{phone},
+            email    = #{email}
+        WHERE id = #{id};
+    </update>
+
     <!--Create new element-->
     <insert id="insert" parameterType="Company" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO company (name, location, phone, email)
         VALUES (#{name}, #{location}, #{phone}, #{email});
     </insert>
 
-    <!--Update element-->
-    <update id="update" parameterType="Company">
-        UPDATE company
-        SET id       = #{id},
-            name     = #{name},
-            location = #{location},
-            phone    = #{phone},
-            email    = #{email}
-    </update>
 
     <!--delete element-->
     <delete id="delete" parameterType="int">
