@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Company">
+<mapper namespace="com.solvd.mybatis.service.interfaces.ICompanyService">
 
     <resultMap id="CompanyResultMap" type="Company">
-        <id property="id" column="id"/>
+        <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="location" column="location"/>
         <result property="phone" column="phone"/>
@@ -13,9 +13,9 @@
 
     <!-- Select by id mapper-->
     <select id="getById" parameterType="int" resultMap="CompanyResultMap">
-        SELECT id, name, location, phone, email
+        SELECT *
         FROM company
-        WHERE ID = #{id};
+        WHERE id = #{id};
     </select>
 
     <!--Create new element-->

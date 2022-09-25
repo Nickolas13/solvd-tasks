@@ -43,7 +43,7 @@ VALUES
 ("steve","wick","steve@gmail.com",1,5,1);
 
 
-#inserting elements in customer service
+#inserting elements in customer studentService
 INSERT INTO `mydb`.`customerservice`
 (`location`,`work_from`,`work_till`)
 VALUES
@@ -97,19 +97,20 @@ SELECT `customer`.`id`,
     `customer`.`cs_id`
 FROM `mydb`.`customer` WHERE city = "new york";
 
-#select filtered by customer service id
+#select filtered by customer studentService id
 SELECT `customer`.`id`,
-    `customer`.`firstname`,
-    `customer`.`city`,
-    `customer`.`phone`,
-    `customer`.`cs_id`
+       `customer`.`firstname`,
+       `customer`.`city`,
+       `customer`.`phone`,
+       `customer`.`cs_id`
 FROM `mydb`.`customer`;
 
 
-SELECT `customer service`.`id`,
-    `customer service`.`work_from`,
-    `customer service`.`work_till`
-FROM `mydb`.`customer service`;
+SELECT `customer studentService`.`id`,
+       `customer studentService`.`work_from`,
+       `customer studentService`.`work_till`
+FROM `mydb`.`customer studentService`;
 
-Select * from factories;
+Select *
+from factories;
 select * from employees;

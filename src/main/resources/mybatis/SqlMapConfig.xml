@@ -5,7 +5,11 @@
 <configuration>
 
     <typeAliases>
-        <typeAlias alias="Student" type="com.solvd.mybatis.Student"/>
+        <typeAlias alias="Company" type="com.solvd.mvc.tables.Company"/>
+        <typeAlias alias="Customer" type="com.solvd.mvc.tables.Customer"/>
+        <typeAlias alias="CustomerService" type="com.solvd.mvc.tables.CustomerService"/>
+        <typeAlias alias="Employees" type="com.solvd.mvc.tables.Employees"/>
+        <typeAlias alias="Factories" type="com.solvd.mvc.tables.Factories"/>
     </typeAliases>
 
     <environments default="development">
@@ -14,7 +18,7 @@
 
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/practise"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
                 <property name="username" value="root"/>
                 <property name="password" value="nika1148"/>
             </dataSource>
@@ -23,7 +27,11 @@
     </environments>
 
     <mappers>
-        <mapper resource="mybatis/mappers/Student.xml"/>
+        <mapper resource="mybatis/mappers/Company.xml"/>
+        <mapper resource="mybatis/mappers/Factories.xml"/>
+        <mapper resource="mybatis/mappers/CustomerService.xml"/>
+        <mapper resource="mybatis/mappers/Employees.xml"/>
+        <mapper resource="mybatis/mappers/Customer.xml"/>
     </mappers>
 
 </configuration>

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="CustomerService">
+<mapper namespace="com.solvd.mybatis.service.interfaces.ICsService">
 
-    <resultMap id="CustomerServiceResultMap" type="CustomerService">
-        <id property="id" column="id"/>
+    <resultMap id="ResultMap" type="CustomerService">
+        <result property="id" column="id"/>
         <result property="location" column="location"/>
         <result property="work_from" column="work_from"/>
         <result property="work_till" column="work_till"/>
     </resultMap>
 
     <!-- Select by id mapper-->
-    <select id="getById" parameterType="int" resultMap="CustomerServiceResultMap">
+    <select id="getById" parameterType="int" resultMap="ResultMap">
         SELECT id, location, work_from, work_till
         FROM customerservice
-        WHERE ID = #{id};
+        WHERE id = #{id};
     </select>
 
     <!--Create new element-->

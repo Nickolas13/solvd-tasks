@@ -1,6 +1,7 @@
 package com.solvd.mvc.tables;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class CustomerService {
     private int id;
@@ -56,5 +57,16 @@ public class CustomerService {
 
     public void setWork_till(String work_till) {
         this.work_till = work_till;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", CustomerService.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("location='" + location + "'")
+                .add("work_from='" + work_from + "'")
+                .add("work_till='" + work_till + "'")
+                .add("customers=" + customers)
+                .toString();
     }
 }

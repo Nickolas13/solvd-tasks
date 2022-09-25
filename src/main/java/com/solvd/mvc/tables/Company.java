@@ -1,6 +1,7 @@
 package com.solvd.mvc.tables;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class Company {
     private int id;
@@ -60,5 +61,14 @@ public class Company {
         this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Company.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("location='" + location + "'")
+                .add("phone=" + phone)
+                .add("email='" + email + "'")
+                .toString();
+    }
 }

@@ -10,16 +10,15 @@ import java.util.List;
 import static com.solvd.mybatis.service.MyBatis.close;
 import static com.solvd.mybatis.service.MyBatis.getSession;
 
-public class Service implements IStudentService {
+public class StudentService implements IStudentService {
 
 
     public void insert(Student student) {
-        SqlSession session = MyBatis.getSqlSessionFactory().openSession();
         try {
-            IStudentService mapper = session.getMapper(IStudentService.class);
+            IStudentService mapper = getSession().getMapper(IStudentService.class);
             mapper.insert(student);
         } finally {
-            close(session);
+            close(getSession());
         }
     }
 

@@ -6,12 +6,12 @@
         <typeAlias alias="Employees" type="com.solvd.mvc.tables.Employees"/>
         <typeAlias alias="Factories" type="com.solvd.mvc.tables.Factories"/>
     </typeAliases>
+
     <properties resource="src/main/resources/properties/mysql.properties"/>
-    <environments default="dev">
-        <environment id="dev">
-            <transactionManager type="JDBC">
-                <property name="defaultReadOnly"/>
-            </transactionManager>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc.driver}"/>
                 <property name="url" value="${jdbc.url}"/>
@@ -20,11 +20,13 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
         <mapper resource="mybatis/mappers/Company.xml"/>
         <mapper resource="mybatis/mappers/Customer.xml"/>
         <mapper resource="mybatis/mappers/CustomerService.xml"/>
         <mapper resource="mybatis/mappers/Employees.xml"/>
         <mapper resource="mybatis/mappers/Factories.xml"/>
+        <mapper resource="mybatis/mappers/Student.xml"/>
     </mappers>
 </configuration>

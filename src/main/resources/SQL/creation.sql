@@ -21,15 +21,17 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`customer service`
+-- Table `mydb`.`customer studentService`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`customer service` (
-  `id` INT NOT NULL,
-  `location` VARCHAR(45) NULL,
-  `work_from` VARCHAR(45) NULL,
-  `work_till` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `mydb`.`customer studentService`
+(
+    `id`        INT         NOT NULL,
+    `location`  VARCHAR(45) NULL,
+    `work_from` VARCHAR(45) NULL,
+    `work_till` VARCHAR(45) NULL,
+    PRIMARY KEY (`id`)
+)
+    ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -47,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`customer` (
   INDEX `fk_customer_customer service1_idx` (`cs_id` ASC) VISIBLE,
   CONSTRAINT `fk_customer_customer service1`
     FOREIGN KEY (`cs_id`)
-    REFERENCES `mydb`.`customer service` (`id`)
+        REFERENCES `mydb`.`customer studentService` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -170,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`employees` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_employees_customer service1`
     FOREIGN KEY (`cs_id`)
-    REFERENCES `mydb`.`customer service` (`id`)
+        REFERENCES `mydb`.`customer studentService` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
