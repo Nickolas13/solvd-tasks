@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.solvd.mybatis.services.interfaces.IEmployeesService">
+<mapper namespace="com.solvd.mybatis.service.interfaces.IEmployeesService">
 
-    <resultMap id="EmployeesServiceResultMap" type="Employees">
-        <id property="id" column="id"/>
+    <resultMap id="EmployeeResultMap" type="Employees">
+        <result property="id" column="id"/>
         <result property="firstname" column="firstname"/>
         <result property="lastname" column="lastname"/>
         <result property="email" column="email"/>
@@ -17,7 +17,7 @@
     <select id="getById" parameterType="int" resultMap="EmployeeResultMap">
         SELECT id, firstname, lastname, email, company_id, factories_id, cs_id
         FROM employees
-        WHERE ID = #{id};
+        WHERE id = #{id};
     </select>
 
     <!--Create new element-->

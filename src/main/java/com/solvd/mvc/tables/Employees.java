@@ -1,5 +1,7 @@
 package com.solvd.mvc.tables;
 
+import java.util.StringJoiner;
+
 public class Employees {
     private int id;
     private String firstname;
@@ -76,5 +78,18 @@ public class Employees {
 
     public void setCs_id(int cs_id) {
         this.cs_id = cs_id;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Employees.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("firstname='" + firstname + "'")
+                .add("lastname='" + lastname + "'")
+                .add("email='" + email + "'")
+                .add("company_id=" + company_id)
+                .add("factories_id=" + factories_id)
+                .add("cs_id=" + cs_id)
+                .toString();
     }
 }

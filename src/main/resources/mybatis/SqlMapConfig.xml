@@ -30,7 +30,7 @@
         <mapper resource="mybatis/mappers/Company.xml"/>
         <mapper resource="mybatis/mappers/Factories.xml"/>
         <mapper resource="mybatis/mappers/CustomerService.xml"/>
-        <mapper resource="mybatis/mappers/Employees.xml"/>
+        <mapper resource="mybatis/mappers/Employee.xml"/>
         <mapper resource="mybatis/mappers/Customer.xml"/>
     </mappers>
 

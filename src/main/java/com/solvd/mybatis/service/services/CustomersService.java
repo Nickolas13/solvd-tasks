@@ -3,17 +3,15 @@ package com.solvd.mybatis.service.services;
 import com.solvd.mvc.dao.mysql.CustomerServiceDao;
 import com.solvd.mvc.tables.Customer;
 import com.solvd.mybatis.service.interfaces.ICustomerService;
-import com.solvd.mybatis.service.interfaces.ICustomerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import static com.solvd.mybatis.service.MyBatis.close;
 import static com.solvd.mybatis.service.MyBatis.getSession;
 
-public class CustomerService implements ICustomerService {
+public class CustomersService implements ICustomerService {
     private static final Logger logger = LogManager.getLogger(CustomerServiceDao.class);
 
     @Override
