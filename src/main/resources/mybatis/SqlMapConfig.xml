@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <properties resource="mysql.properties"/>
     <typeAliases>
         <typeAlias alias="Company" type="com.solvd.mvc.tables.Company"/>
         <typeAlias alias="Customer" type="com.solvd.mvc.tables.Customer"/>
@@ -12,17 +13,16 @@
         <typeAlias alias="Factories" type="com.solvd.mvc.tables.Factories"/>
     </typeAliases>
 
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
-
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
-                <property name="username" value="root"/>
-                <property name="password" value="nika1148"/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
-
         </environment>
     </environments>
 

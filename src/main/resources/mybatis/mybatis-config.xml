@@ -7,7 +7,7 @@
         <typeAlias alias="Factories" type="com.solvd.mvc.tables.Factories"/>
     </typeAliases>
 
-    <properties resource="src/main/resources/properties/mysql.properties"/>
+    <properties resource="properties/mysql.properties"/>
 
     <environments default="development">
         <environment id="development">
