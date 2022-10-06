@@ -5,12 +5,13 @@
 <configuration>
 
     <properties resource="mysql.properties"/>
+
     <typeAliases>
-        <typeAlias alias="Company" type="com.solvd.mvc.tables.Company"/>
-        <typeAlias alias="Customer" type="com.solvd.mvc.tables.Customer"/>
-        <typeAlias alias="CustomerService" type="com.solvd.mvc.tables.CustomerService"/>
-        <typeAlias alias="Employees" type="com.solvd.mvc.tables.Employees"/>
-        <typeAlias alias="Factories" type="com.solvd.mvc.tables.Factories"/>
+        <typeAlias alias="Company" type="com.solvd.dao.models.Company"/>
+        <typeAlias alias="Customer" type="com.solvd.dao.models.Customer"/>
+        <typeAlias alias="CustomerService" type="com.solvd.dao.models.CustomerService"/>
+        <typeAlias alias="Employees" type="com.solvd.dao.models.Employees"/>
+        <typeAlias alias="Factories" type="com.solvd.dao.models.Factories"/>
     </typeAliases>
 
 

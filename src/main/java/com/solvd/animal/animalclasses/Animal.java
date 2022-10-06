@@ -25,6 +25,10 @@ abstract class Animal implements IAnimal {
         this.age = age;
     }
 
+    public Animal() {
+
+    }
+
     //Getters
     public int getAge() {
         return age;

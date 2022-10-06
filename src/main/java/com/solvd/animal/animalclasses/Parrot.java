@@ -13,6 +13,10 @@ public class Parrot extends Animal implements IFly {
         super(animalName, foodCost, weight, age);
     }
 
+    public Parrot() {
+
+    }
+
 
     public int getAge() {
         return super.getAge();

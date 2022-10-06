@@ -11,6 +11,10 @@ public class Cow extends Animal{
         super(animalName, animalType, foodCost, weight, age);
     }
 
+    public Cow() {
+        super();
+    }
+
     @Override
     public void setName(String name) {
         super.setName(name);

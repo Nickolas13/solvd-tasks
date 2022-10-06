@@ -14,16 +14,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
-
+        AnimalFactory factory = new AnimalFactory();
+        Animal parrot = factory.getAnimal("parrot");
+        parrot.setName("billy");
+        parrot.setAge(45);
+        parrot.setWeight(410);
+        parrot.setAnimalType("parrot");
+        System.out.println(parrot);
     }
 }
 
 //        logger.error("Entering Application: ");
 //        logger.trace(Main.class);
 //        logger.trace(Animal.class);
-//
+
 //        //creating animal objects from classes which extend Animal
 //        Cow alfons = new Cow("Alfons",100,500,6);
 //        Parrot john = new Parrot("john",400,20,40);

@@ -9,6 +9,10 @@ public class Penguin extends Animal{
         super(animalName, foodCost, weight, age);
     }
 
+    public Penguin() {
+
+    }
+
 
     public int getAge() {
         return super.getAge();
