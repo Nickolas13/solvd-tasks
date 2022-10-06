@@ -60,7 +60,7 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
                 customer.setCs_id(result.getInt("cs_id"));
             }
             System.out.println(output);
-            return null;
+            return customer;
         } catch (SQLException e) {
             logger.error(e);
         }
@@ -81,13 +81,17 @@ public class CustomerDao extends MySqlDao implements IBaseDAO<Customer>, ICustom
     }
 
     @Override
-    public void update(Customer object) {
+    public void update(Customer customer) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
-            PreparedStatement statement = null;
-            statement = conn.prepareStatement("UPDATE customer SET firstname = ? WHERE id = ?");
-            statement.setString(1, object.getFirstname());
-            statement.setInt(2, object.getId());
+            PreparedStatement statement = conn.prepareStatement("UPDATE customer SET firstname = ?, lastname = ?, city = ?, phone = ?, email = ?, cs_id = ? WHERE id = ?");
+            statement.setString(1, customer.getFirstname());
+            statement.setString(2, customer.getLastname());
+            statement.setString(3, customer.getCity());
+            statement.setInt(4, customer.getPhone());
+            statement.setString(5, customer.getEmail());
+            statement.setInt(6, customer.getCs_id());
+            statement.setInt(7, customer.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);

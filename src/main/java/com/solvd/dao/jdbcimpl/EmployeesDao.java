@@ -60,7 +60,7 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
 
             }
             System.out.println(output);
-            return null;
+            return employee;
         } catch (SQLException e) {
             logger.error(e);
         }
@@ -85,9 +85,14 @@ public class EmployeesDao extends MySqlDao implements IBaseDAO<Employees>, IEmpl
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
             PreparedStatement statement = null;
-            statement = conn.prepareStatement("UPDATE employees SET firstname = ? WHERE id = ?;");
+            statement = conn.prepareStatement("UPDATE employees SET firstname = ?, lastname = ?, email = ?, company_id = ?, factories_id = ?, cs_id = ? WHERE id = ?;");
             statement.setString(1, em.getFirstname());
-            statement.setInt(2, em.getId());
+            statement.setString(2, em.getLastname());
+            statement.setString(3, em.getEmail());
+            statement.setInt(4, em.getCompany_id());
+            statement.setInt(5, em.getFactories_id());
+            statement.setInt(6, em.getCs_id());
+            statement.setInt(7, em.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);

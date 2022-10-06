@@ -80,9 +80,12 @@ public class FactoriesDao extends MySqlDao implements IBaseDAO<Factories>, IFact
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
             PreparedStatement statement = null;
-            statement = conn.prepareStatement("UPDATE factories SET name = ? WHERE id = ?;");
+            statement = conn.prepareStatement("UPDATE factories SET name = ?, prod_type = ?, pa_month = ?, company_id = ? WHERE id = ?;");
             statement.setString(1, f.getName());
-            statement.setInt(2, f.getId());
+            statement.setString(2, f.getProd_type());
+            statement.setInt(3, f.getPa_month());
+            statement.setInt(4, f.getCompany_id());
+            statement.setInt(5, f.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);

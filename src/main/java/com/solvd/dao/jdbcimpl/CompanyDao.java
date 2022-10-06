@@ -81,7 +81,12 @@ public class CompanyDao extends MySqlDao implements IBaseDAO<Company>, ICompanyD
     public void update(Company com) {
         try {
             Connection conn = ConnectionPool.getInstance().retrieve();
-            PreparedStatement statement = null;
+            PreparedStatement statement = conn.prepareStatement("UPDATE company SET name = ?, location = ?, phone = ?, email = ? WHERE id = ?");
+            statement.setString(1, com.getName());
+            statement.setString(2, com.getLocation());
+            statement.setString(3, com.getPhone());
+            statement.setString(4, com.getEmail());
+            statement.setInt(5, com.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);
